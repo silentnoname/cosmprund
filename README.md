@@ -78,6 +78,7 @@ Flags:
 - irisnet: IRISnet
 - axelar: Axelar
 - umee: Umee
+- nibiru : Nibiru
 
 
 ### Note

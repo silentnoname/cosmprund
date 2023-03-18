@@ -593,14 +593,14 @@ func pruneAppState(home string) error {
 			keys[key] = value
 		}
 	} else if app == "desmos" {
-	    // https://github.com/desmos-labs/desmos/blob/master/app/app.go#L388
+		// https://github.com/desmos-labs/desmos/blob/master/app/app.go#L388
 		desmosKeys := types.NewKVStoreKeys(
 			// common modules
 			"feegrant", // feegrant.StoreKey,
 			"wasm",     // wasm.StoreKey,
 			"authz",    // authzkeeper.StoreKey,
 			// mainnet since v4.7.0
-			"profiles", // profilestypes.StoreKey,
+			"profiles",      // profilestypes.StoreKey,
 			"relationships", // relationshipstypes.StoreKey,
 			"subspaces",     // subspacestypes.StoreKey,
 			"posts",         // poststypes.StoreKey,
@@ -610,6 +610,25 @@ func pruneAppState(home string) error {
 		)
 
 		for key, value := range desmosKeys {
+			keys[key] = value
+		}
+	} else if app == "nibiru" {
+		//
+		nibiruKeys := types.NewKVStoreKeys(
+			// https://github.com/NibiruChain/nibiru/blob/588bebe03d8db7d1f3789bb334067b08cff936f0/app/app.go#L331
+			"feegrant",   // feegrant.StoreKey,
+			"wasm",       // wasm.StoreKey,
+			"authz",      // authzkeeper.StoreKey,
+			"spot",       //spottypes.StoreKey
+			"stablecoin", //stablecointypes.StoreKey
+			"oracle",     //oracletypes.StoreKey
+			"epoch",      //epochtypes.StoreKey
+			"perp",       //perptypes.StoreKey
+			"vpool",      //vpooltypes.StoreKey
+
+		)
+
+		for key, value := range nibiruKeys {
 			keys[key] = value
 		}
 	}
